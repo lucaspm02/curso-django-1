@@ -69,7 +69,14 @@
 
                 {% if is_detail_page is True%}
                     <div class= "preparation-steps">
+                        {%if recipe.preparation_steps_is_html is True%}
+                            {{ recipe.preparation_steps|safe }} {% comment %} #usar safe para interpretar o html {% endcomment %}
+                            
+                    {% else %}  
                         {{ recipe.preparation_steps|linebreaksbr }}
-                    </div>
+                    {% endif %}
+                    </div>     
                 {% endif %}
+                   
+
             </div>
